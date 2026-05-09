@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.claude/
+
+# Personal content
+public/images/
+content/posts/*.md
+src/data/profile.js
