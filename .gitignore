@@ -3,7 +3,8 @@ dist/
 .claude/
 
 # Personal content
-public/images/
+public/images/*
+!public/images/example.jpg
 content/posts/*.md
 !content/posts/_template.md
 src/data/profile.js
