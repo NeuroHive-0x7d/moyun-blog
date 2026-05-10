@@ -70,6 +70,8 @@ export default function Article() {
     window.scrollTo(0, 0)
   }, [id])
 
+  useMeta({ title: post?.title, description: post?.excerpt })
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
@@ -77,8 +79,6 @@ export default function Article() {
       </div>
     )
   }
-
-  useMeta({ title: post?.title, description: post?.excerpt })
 
   if (!post || post.hidden) {
     return <NotFound />
