@@ -5,4 +5,6 @@ dist/
 # Personal content
 public/images/
 content/posts/*.md
+!content/posts/_template.md
 src/data/profile.js
+src/data/about.js
