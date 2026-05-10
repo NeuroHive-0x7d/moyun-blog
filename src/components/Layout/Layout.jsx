@@ -67,6 +67,7 @@ export default function Layout({ children }) {
             <nav className="flex gap-8 text-sm font-medium">
               {[
                 ['/', '文章'],
+                ['/archive', '归档'],
                 ['/about', '关于'],
               ].map(([path, label]) => {
                 const active = pathname === path
