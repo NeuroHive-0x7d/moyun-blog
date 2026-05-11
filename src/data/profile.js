@@ -6,7 +6,7 @@ export default {
   avatar: '/images/avatar/avatar.png',
   name: 'NeuroHive',
   signature: '墨韵 · NeuroHive 团队的技术博客。',
-  email: '',
+  email: 'neurohive@mail.infuniv.com',
   since: '2026',
   icp: '',
 }
