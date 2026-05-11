@@ -82,6 +82,12 @@ export default function InkCursor() {
     setRipples((prev) => prev.filter((r) => r.id !== id))
   }, [])
 
+  // Don't render custom cursor on touch devices
+  const isTouchDevice =
+    typeof window !== 'undefined' &&
+    ('ontouchstart' in window || navigator.maxTouchPoints > 0)
+  if (isTouchDevice) return null
+
   return (
     <>
       {/* Cursor */}

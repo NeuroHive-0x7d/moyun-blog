@@ -18,18 +18,15 @@
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 }
 
-body {
-  font-family: var(--font-sans);
-  background-color: var(--color-paper);
-  color: var(--color-ink);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  cursor: none;
-}
+@media (hover: hover) {
+  body {
+    cursor: none;
+  }
 
-a, button, [role="button"], input, textarea, select,
-.cursor-pointer, .cursor-zoom-in, .cursor-default, .cursor-text {
-  cursor: none;
+  a, button, [role="button"], input, textarea, select,
+  .cursor-pointer, .cursor-zoom-in, .cursor-default, .cursor-text {
+    cursor: none;
+  }
 }
 
 /* ── Ink Cursor ── */
