@@ -35,8 +35,10 @@ export default function ProfileCard() {
 
         {/* Email */}
         {profile.email && (
-          <p className="text-sm text-ink-muted tracking-wide mb-3 break-all">
-            {profile.email}
+          <p className="text-sm text-ink-muted tracking-wide mb-3">
+            {profile.email.split('@')[0]}
+            <wbr />
+            @{profile.email.split('@').slice(1).join('@')}
           </p>
         )}
 
