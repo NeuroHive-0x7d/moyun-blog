@@ -10,7 +10,7 @@ document.title = profile.pageTitle
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <InkCursor />
       <App />
     </BrowserRouter>
