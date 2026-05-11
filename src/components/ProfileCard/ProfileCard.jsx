@@ -3,6 +3,7 @@ import profile from '../../data/profile'
 
 export default function ProfileCard() {
   const [avatarEnlarged, setAvatarEnlarged] = useState(false)
+  const avatarUrl = import.meta.env.BASE_URL + profile.avatar.replace(/^\//, '')
 
   return (
     <>
@@ -15,7 +16,7 @@ export default function ProfileCard() {
         >
           <div className="w-16 h-16 mx-auto rounded-full overflow-hidden border-2 border-rule group-hover:border-amber/50 transition-all duration-300 group-hover:shadow-md">
             <img
-              src={profile.avatar}
+              src={avatarUrl}
               alt={profile.name}
               className="w-full h-full object-cover"
             />
@@ -64,7 +65,7 @@ export default function ProfileCard() {
             &#10005;
           </button>
           <img
-            src={profile.avatar}
+            src={avatarUrl}
             alt={profile.name}
             className="max-w-[90vw] max-h-[80vh] object-contain rounded-lg shadow-2xl"
             onClick={(e) => e.stopPropagation()}
