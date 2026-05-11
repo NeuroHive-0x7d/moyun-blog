@@ -1,5 +1,17 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
 
+function useIsTouch() {
+  const [isTouch, setIsTouch] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(pointer: coarse)')
+    setIsTouch(mq.matches)
+    const handler = (e) => setIsTouch(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+  return isTouch
+}
+
 function Ripple({ x, y, id, onDone }) {
   useEffect(() => {
     const timer = setTimeout(onDone, 700)
@@ -20,6 +32,7 @@ function Ripple({ x, y, id, onDone }) {
 }
 
 export default function InkCursor() {
+  const isTouch = useIsTouch()
   const [pos, setPos] = useState({ x: -100, y: -100 })
   const [hover, setHover] = useState(false)
   const [ripples, setRipples] = useState([])
@@ -83,10 +96,7 @@ export default function InkCursor() {
   }, [])
 
   // Don't render custom cursor on touch devices
-  const isTouchDevice =
-    typeof window !== 'undefined' &&
-    ('ontouchstart' in window || navigator.maxTouchPoints > 0)
-  if (isTouchDevice) return null
+  if (isTouch) return null
 
   return (
     <>

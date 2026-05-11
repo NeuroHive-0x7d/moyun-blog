@@ -18,7 +18,7 @@
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   body {
     cursor: none;
   }
