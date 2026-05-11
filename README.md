@@ -2,7 +2,9 @@
 
 一个纯前端静态博客，以「墨韵」为主题——暖纸底色、墨色文字、琥珀点缀，如古老书房中一灯如豆。
 
-> 🌐 **在线访问：** [https://neurohive-0x7d.github.io/moyun-blog/](https://neurohive-0x7d.github.io/moyun-blog/)
+🌐 **在线访问：** [https://neurohive-0x7d.github.io/moyun-blog/](https://neurohive-0x7d.github.io/moyun-blog/)
+
+📦 **博客框架：** [moyun](https://github.com/NeuroHive-0x7d/moyun) — 本博客基于此框架构建，框架提供统一的主题、组件与配置模板。
 
 > 1. 此项目由 deepseek-v4-pro 进行 vibe coding 生成，旨在测试模型的代码生成能力和项目构建能力。所有内容（包括文本、代码、文件结构）均由模型创作，除基础依赖外未使用任何现成模板或第三方库。
 > 2. 项目中不排除存在 bug 或未完善的功能。
