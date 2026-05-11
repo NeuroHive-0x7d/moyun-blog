@@ -13,7 +13,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Architecture
 
-A frontend-only static blog built with React 18 + Vite 5 + Tailwind CSS 4. No backend.
+A frontend-only static blog built with React 18 + Vite 5 + Tailwind CSS 4. No backend. Maintained by the NeuroHive team.
 
 ### Routing (React Router v6)
 

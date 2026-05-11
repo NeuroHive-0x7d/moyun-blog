@@ -5,6 +5,7 @@ import rssPlugin from './src/rss/plugin.js'
 import profile from './src/data/profile.js'
 
 export default defineConfig({
+  base: '/moyun-blog/',
   plugins: [
     react(),
     tailwindcss(),
