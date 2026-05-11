@@ -1,17 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
 
-function useIsTouch() {
-  const [isTouch, setIsTouch] = useState(false)
-  useEffect(() => {
-    const mq = window.matchMedia('(pointer: coarse)')
-    setIsTouch(mq.matches)
-    const handler = (e) => setIsTouch(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
-  return isTouch
-}
-
 function Ripple({ x, y, id, onDone }) {
   useEffect(() => {
     const timer = setTimeout(onDone, 700)
@@ -31,15 +19,32 @@ function Ripple({ x, y, id, onDone }) {
   )
 }
 
+function useIsTouch() {
+  const [isTouch, setIsTouch] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(pointer: coarse)')
+    setIsTouch(mq.matches)
+
+    const onChange = (e) => setIsTouch(e.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+
+  return isTouch
+}
+
 export default function InkCursor() {
-  const isTouch = useIsTouch()
   const [pos, setPos] = useState({ x: -100, y: -100 })
   const [hover, setHover] = useState(false)
   const [ripples, setRipples] = useState([])
   const [visible, setVisible] = useState(false)
   const idRef = useRef(0)
+  const isTouch = useIsTouch()
 
   useEffect(() => {
+    if (isTouch) return
+
     const onMove = (e) => {
       setPos({ x: e.clientX, y: e.clientY })
       if (!visible) setVisible(true)
@@ -89,14 +94,13 @@ export default function InkCursor() {
       document.removeEventListener('mouseout', onOut)
       document.removeEventListener('click', onClick)
     }
-  }, [visible])
+  }, [visible, isTouch])
+
+  if (isTouch) return null
 
   const removeRipple = useCallback((id) => {
     setRipples((prev) => prev.filter((r) => r.id !== id))
   }, [])
-
-  // Don't render custom cursor on touch devices
-  if (isTouch) return null
 
   return (
     <>
