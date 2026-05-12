@@ -1,23 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-
-function parseFrontmatter(raw) {
-  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
-  if (!match) return {}
-  const data = {}
-  const lines = match[1].split(/\r?\n/)
-  for (const line of lines) {
-    const idx = line.indexOf(':')
-    if (idx === -1) continue
-    const key = line.slice(0, idx).trim()
-    let val = line.slice(idx + 1).trim()
-    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
-      val = val.slice(1, -1)
-    }
-    data[key] = val
-  }
-  return data
-}
+import { parseFrontmatter } from '../utils/frontmatter.js'
 
 export default function rssPlugin(siteUrl, siteTitle, siteDesc) {
   return {
@@ -30,7 +13,7 @@ export default function rssPlugin(siteUrl, siteTitle, siteDesc) {
       const posts = files
         .map((f) => {
           const raw = fs.readFileSync(path.join(postsDir, f), 'utf-8')
-          const data = parseFrontmatter(raw)
+          const { data } = parseFrontmatter(raw)
           return { ...data, id: f.replace('.md', '') }
         })
         .filter((p) => !p.hidden && p.date)

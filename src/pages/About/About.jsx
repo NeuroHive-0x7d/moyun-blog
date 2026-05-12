@@ -7,27 +7,9 @@ import rehypeSlug from 'rehype-slug'
 import rehypeHighlight from 'rehype-highlight'
 import CodeBlock from '../../components/CodeBlock/CodeBlock'
 import useMeta from '../../hooks/useMeta'
+import { parseFrontmatter } from '../../utils/frontmatter'
 
 const aboutModules = import.meta.glob('/content/pages/about.md', { query: '?raw', import: 'default' })
-
-function parseFrontmatter(raw) {
-  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/)
-  if (!match) return { data: {}, content: raw }
-  const data = {}
-  const yaml = match[1]
-  const lines = yaml.split(/\r?\n/)
-  for (const line of lines) {
-    const colonIdx = line.indexOf(':')
-    if (colonIdx === -1) continue
-    const key = line.slice(0, colonIdx).trim()
-    let value = line.slice(colonIdx + 1).trim()
-    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
-      value = value.slice(1, -1)
-    }
-    data[key] = value
-  }
-  return { data, content: match[2].trim() }
-}
 
 export default function About() {
   const [content, setContent] = useState(null)

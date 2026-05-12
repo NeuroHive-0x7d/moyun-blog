@@ -52,9 +52,7 @@
 │   ├── data/
 │   │   ├── profile.js             # 个人资料（不提交到 Git）
 │   │   ├── profile.example.js     # 个人资料模板
-│   │   ├── loadPosts.js           # 文章加载与解析
-│   │   ├── about.js               # 关于页内容（不提交到 Git）
-│   │   └── about.example.js       # 关于页模板
+│   │   └── loadPosts.js           # 文章加载与解析
 │   ├── hooks/
 │   │   └── useMeta.js             # 页面 title/meta 设置
 │   ├── components/
@@ -138,7 +136,7 @@ cover: null
 
 **个人资料**：复制 `src/data/profile.example.js` 为 `src/data/profile.js`，编辑个人信息。
 
-**关于页面**：复制 `src/data/about.example.js` 为 `src/data/about.js`，编辑关于页内容。
+**关于页面**：编辑 `content/pages/about.md` 即可修改关于页内容。
 
 **主题色**：编辑 `src/index.css` 中的 `@theme` 块。
 
@@ -159,7 +157,6 @@ cover: null
 | `content/posts/*.md` | 博客文章（`_template.md` 除外） |
 | `public/images/` | 图片资源 |
 | `src/data/profile.js` | 个人资料 |
-| `src/data/about.js` | 关于页内容 |
 
 新克隆项目后，复制对应的 `.example.js` 文件并创建文章即可开始使用。
 

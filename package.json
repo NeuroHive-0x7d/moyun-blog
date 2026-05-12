@@ -10,7 +10,6 @@
     "postbuild": "node -e \"require('fs').copyFileSync('dist/index.html','dist/404.html')\""
   },
   "dependencies": {
-    "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
     "katex": "^0.16.45",
     "react": "^18.3.1",
