@@ -2,12 +2,12 @@ import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout/Layout'
 import Home from './pages/Home/Home'
-import About from './pages/About/About'
 import Archive from './pages/Archive/Archive'
 import NotFound from './pages/NotFound/NotFound'
 
 const Article = lazy(() => import('./pages/Article/Article'))
 const Tag = lazy(() => import('./pages/Tag/Tag'))
+const About = lazy(() => import('./pages/About/About'))
 
 function PageFallback() {
   return (
@@ -38,7 +38,14 @@ export default function App() {
             </Suspense>
           }
         />
-        <Route path="/about" element={<About />} />
+        <Route
+          path="/about"
+          element={
+            <Suspense fallback={<PageFallback />}>
+              <About />
+            </Suspense>
+          }
+        />
         <Route path="/archive" element={<Archive />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
