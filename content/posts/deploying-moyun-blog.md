@@ -8,6 +8,8 @@ hidden: false
 cover: null
 ---
 
+> 提示：本文由 AI 生成
+
 ## 故事的开始
 
 墨韵，一个基于 React 18 + Vite 5 + Tailwind CSS 4 的静态博客，纯前端，无后端，理论上部署到任意静态托管服务就可以跑起来。
