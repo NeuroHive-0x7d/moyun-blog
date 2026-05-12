@@ -11,7 +11,26 @@ import { parseFrontmatter } from '../../utils/frontmatter'
 
 const aboutModules = import.meta.glob('/content/pages/about.md', { query: '?raw', import: 'default' })
 
+function Skeleton() {
+  return (
+    <div className="max-w-3xl mx-auto px-6 py-16 animate-pulse">
+      <div className="h-9 w-48 bg-rule rounded mb-10" />
+      <div className="w-8 h-px bg-amber mb-10" />
+      <div className="space-y-4">
+        <div className="h-4 bg-rule rounded w-full" />
+        <div className="h-4 bg-rule rounded w-11/12" />
+        <div className="h-4 bg-rule rounded w-3/4" />
+        <div className="h-4 bg-rule rounded w-5/6" />
+        <div className="h-4 bg-rule rounded w-2/3" />
+        <div className="h-4 bg-rule rounded w-full" />
+        <div className="h-4 bg-rule rounded w-4/5" />
+      </div>
+    </div>
+  )
+}
+
 export default function About() {
+  const [loading, setLoading] = useState(true)
   const [content, setContent] = useState(null)
   const [title, setTitle] = useState('关于')
 
@@ -19,6 +38,7 @@ export default function About() {
     (async () => {
       const loader = aboutModules['/content/pages/about.md']
       if (!loader) {
+        setLoading(false)
         setContent(null)
         return
       }
@@ -26,12 +46,15 @@ export default function About() {
       const { data, content: md } = parseFrontmatter(raw)
       setTitle(data.title || '关于')
       setContent(md)
+      setLoading(false)
     })()
   }, [])
 
   useMeta({ title })
 
   const components = useMemo(() => ({ pre: CodeBlock }), [])
+
+  if (loading) return <Skeleton />
 
   if (content === null) {
     return (

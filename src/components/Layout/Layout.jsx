@@ -75,6 +75,9 @@ export default function Layout({ children }) {
                   <Link
                     key={path}
                     to={path}
+                    onPointerEnter={() => {
+                      if (path === '/about') import('../../pages/About/About')
+                    }}
                     className={`relative py-1 transition-colors duration-300 ${
                       active ? 'text-ink' : 'text-ink-muted hover:text-ink-light'
                     }`}
