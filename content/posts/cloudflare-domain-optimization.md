@@ -8,6 +8,8 @@ hidden: false
 cover: null
 ---
 
+> **提示：本文由 AI 生成**
+
 ## 一个反直觉的事实
 
 把域名接入 Cloudflare，开启 CDN 代理，理论上应该变快。
