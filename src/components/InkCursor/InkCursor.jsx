@@ -42,6 +42,10 @@ export default function InkCursor() {
   const idRef = useRef(0)
   const isTouch = useIsTouch()
 
+  const removeRipple = useCallback((id) => {
+    setRipples((prev) => prev.filter((r) => r.id !== id))
+  }, [])
+
   useEffect(() => {
     if (isTouch) return
 
@@ -97,10 +101,6 @@ export default function InkCursor() {
   }, [visible, isTouch])
 
   if (isTouch) return null
-
-  const removeRipple = useCallback((id) => {
-    setRipples((prev) => prev.filter((r) => r.id !== id))
-  }, [])
 
   return (
     <>
