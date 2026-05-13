@@ -1,5 +1,5 @@
 ---
-title: "关于墨韵"
+title: "关于墨韵 · NeuroHive"
 ---
 
 NeuroHive 蜂巢 · AI 开发者的技术角落。
