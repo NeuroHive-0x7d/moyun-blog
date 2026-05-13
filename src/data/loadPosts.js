@@ -35,7 +35,7 @@ export async function loadPosts() {
         hidden: data.hidden === 'true' || data.hidden === true,
         content,
         readTime: estimateReadTime(content),
-        cover: data.cover || null,
+        cover: (data.cover && data.cover !== 'null') ? data.cover : null,
       }
     })
   )
