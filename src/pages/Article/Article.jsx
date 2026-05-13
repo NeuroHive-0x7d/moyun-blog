@@ -70,7 +70,7 @@ export default function Article() {
     window.scrollTo(0, 0)
   }, [id])
 
-  useMeta({ title: post?.title, description: post?.excerpt })
+  useMeta({ title: post?.title, description: post?.excerpt, image: post?.cover })
 
   if (loading) {
     return (
@@ -141,6 +141,19 @@ export default function Article() {
               ))}
             </div>
           </header>
+
+          {/* Cover image */}
+          {post.cover && (
+            <div className="mb-10 flex justify-center">
+              <img
+                src={post.cover}
+                alt={post.title}
+                className="max-w-full max-h-96 object-contain rounded-lg cursor-zoom-in hover:opacity-90 transition-opacity duration-200"
+                onClick={() => setLightbox({ src: post.cover, alt: post.title })}
+                loading="lazy"
+              />
+            </div>
+          )}
 
           {/* Decorative rule */}
           <div className="flex items-center gap-3 mb-10">

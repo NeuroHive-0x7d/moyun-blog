@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import profile from '../data/profile'
 
-export default function useMeta({ title, description } = {}) {
+export default function useMeta({ title, description, image } = {}) {
   useEffect(() => {
     const created = []
 
@@ -18,17 +18,20 @@ export default function useMeta({ title, description } = {}) {
     }
 
     const siteTitle = profile.pageTitle
-    document.title = title ? `${title} | ${siteTitle}` : siteTitle
+    const pageTitle = title ? `${title} | ${siteTitle}` : siteTitle
+    document.title = pageTitle
     setMeta('description', description || '')
-    setMeta('og:title', title ? `${title} | ${siteTitle}` : siteTitle)
+    setMeta('og:title', pageTitle)
     setMeta('og:description', description || '')
+    setMeta('og:image', image || '')
     setMeta('og:type', title ? 'article' : 'website')
-    setMeta('twitter:card', 'summary')
-    setMeta('twitter:title', title ? `${title} | ${siteTitle}` : siteTitle)
+    setMeta('twitter:card', image ? 'summary_large_image' : 'summary')
+    setMeta('twitter:title', pageTitle)
     setMeta('twitter:description', description || '')
+    setMeta('twitter:image', image || '')
 
     return () => {
       created.forEach(el => el.remove())
     }
-  }, [title, description])
+  }, [title, description, image])
 }
