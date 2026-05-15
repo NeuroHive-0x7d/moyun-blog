@@ -1,6 +1,6 @@
 import { parseFrontmatter } from '../utils/frontmatter'
 
-const postModules = import.meta.glob('/content/posts/*.md', { query: '?raw', import: 'default' })
+const postModules = import.meta.glob('/content/posts/**/*.md', { query: '?raw', import: 'default' })
 
 let _posts = null
 
