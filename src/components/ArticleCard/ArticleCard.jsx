@@ -11,6 +11,17 @@ export default function ArticleCard({ post, index = 0 }) {
         to={`/article/${post.id}`}
         className="block -mx-3 px-3 py-2 rounded-lg transition-all duration-300 hover:bg-rule/40"
       >
+        {post.cover && (
+          <div className="float-right ml-4 mb-3 w-40 shrink-0 sm:w-48 md:w-56">
+            <img
+              src={post.cover}
+              alt=""
+              className="w-full aspect-[2/1] object-cover rounded-md border border-rule/60 group-hover:border-amber/30 transition-colors duration-300"
+              loading="lazy"
+            />
+          </div>
+        )}
+
         {/* Meta line */}
         <div className="flex items-center gap-2.5 text-xs text-ink-muted mb-3 font-medium tracking-wide">
           <time dateTime={post.date}>{post.date}</time>
