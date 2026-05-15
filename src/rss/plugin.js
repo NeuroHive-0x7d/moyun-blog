@@ -9,12 +9,27 @@ export default function rssPlugin(siteUrl, siteTitle, siteDesc) {
       const postsDir = path.resolve('content/posts')
       if (!fs.existsSync(postsDir)) return
 
-      const files = fs.readdirSync(postsDir).filter((f) => f.endsWith('.md'))
-      const posts = files
-        .map((f) => {
-          const raw = fs.readFileSync(path.join(postsDir, f), 'utf-8')
+      function collectMdFiles(dir, base) {
+        const entries = fs.readdirSync(dir, { withFileTypes: true })
+        const files = []
+        for (const e of entries) {
+          const full = path.join(dir, e.name)
+          const rel = path.join(base, e.name)
+          if (e.isDirectory()) {
+            files.push(...collectMdFiles(full, rel))
+          } else if (e.name.endsWith('.md')) {
+            files.push({ full, rel })
+          }
+        }
+        return files
+      }
+
+      const mdFiles = collectMdFiles(postsDir, '')
+      const posts = mdFiles
+        .map(({ full, rel }) => {
+          const raw = fs.readFileSync(full, 'utf-8')
           const { data } = parseFrontmatter(raw)
-          return { ...data, id: f.replace('.md', '') }
+          return { ...data, id: rel.replace(/\\/g, '/').replace('.md', '') }
         })
         .filter((p) => !p.hidden && p.date)
         .sort((a, b) => b.date.localeCompare(a.date))

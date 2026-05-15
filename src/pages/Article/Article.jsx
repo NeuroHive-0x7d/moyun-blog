@@ -48,7 +48,7 @@ function MarkdownRenderer({ content, onImageClick }) {
 }
 
 export default function Article() {
-  const { id } = useParams()
+  const { '*': id } = useParams()
   const [post, setPost] = useState(null)
   const [nextPost, setNextPost] = useState(null)
   const [loading, setLoading] = useState(true)

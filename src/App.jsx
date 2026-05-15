@@ -23,7 +23,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
-          path="/article/:id"
+          path="/article/*"
           element={
             <Suspense fallback={<PageFallback />}>
               <Article />
