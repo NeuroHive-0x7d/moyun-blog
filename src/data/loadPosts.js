@@ -36,11 +36,12 @@ export async function loadPosts() {
         content,
         readTime: estimateReadTime(content),
         cover: (data.cover && data.cover !== 'null') ? data.cover : null,
+        order: data.order != null ? parseInt(data.order, 10) : 0,
       }
     })
   )
 
-  _posts = entries.sort((a, b) => b.date.localeCompare(a.date))
+  _posts = entries.sort((a, b) => b.date.localeCompare(a.date) || b.order - a.order || a.id.localeCompare(b.id))
   return _posts
 }
 

@@ -4,6 +4,7 @@ date: "2026-05-16"
 category: "小说"
 tags: ["小说", "文学", "纸页间的呢喃"]
 excerpt: "六月末的雨，下得没完没了。苏眠站在公交站牌下，撑着一把黑色的伞，脚边是一只半旧的拉杆箱……"
+order: 1
 hidden: false
 cover: null
 ---

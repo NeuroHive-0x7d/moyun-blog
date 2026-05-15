@@ -4,6 +4,7 @@ date: "2026-05-12"
 category: "技术"
 tags: ["Vite", "React", "Markdown", "静态博客", "前端架构"]
 excerpt: "静态博客可以做到什么程度？本文拆解墨韵的内容管理方案：import.meta.glob 动态加载、手写 YAML 解析器、零外部依赖的阅读时间估算，以及这套方案相比 SSG 的取舍。"
+order: 1
 hidden: false
 cover: null
 ---
