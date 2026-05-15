@@ -4,7 +4,7 @@ date: "2026-05-12"
 category: "技术"
 tags: ["Cloudflare", "DNS", "CDN", "网络优化", "运维"]
 excerpt: "Cloudflare 很快，但不一定对你最快。域名优选的核心思路是——不换服务器，只换路：主动筛选延迟最低的 Cloudflare 节点 IP，让访问者走最快的路到达你的站点。"
-order: 1
+order: 2
 hidden: false
 cover: null
 ---
